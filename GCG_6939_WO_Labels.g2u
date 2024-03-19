@@ -1,0 +1,757 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.frmMain..Create(BaseForm)
+Gui.frmMain..Caption("Work Order Labels")
+Gui.frmMain..Size(552,737)
+Gui.frmMain..MinX(0)
+Gui.frmMain..MinY(0)
+Gui.frmMain..Position(0,0)
+Gui.frmMain..AlwaysOnTop(False)
+Gui.frmMain..FontName("Tahoma")
+Gui.frmMain..FontSize(8.25)
+Gui.frmMain..ControlBox(True)
+Gui.frmMain..MaxButton(True)
+Gui.frmMain..MinButton(True)
+Gui.frmMain..MousePointer(0)
+Gui.frmMain..Moveable(True)
+Gui.frmMain..Sizeable(True)
+Gui.frmMain..ShowInTaskBar(True)
+Gui.frmMain..TitleBar(True)
+Gui.frmMain..Event(UnLoad,frmMain_UnLoad)
+Gui.frmMain.lbl1.Create(Label,"Work Order",True,56,13,0,14,14,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lbl1.BorderStyle(0)
+Gui.frmMain.txtJob.Create(TextBox,"",True,63,20,0,13,29,True,0,"Tahoma",8.25,,1)
+Gui.frmMain.txtJob.Event(GotFocus,txtJob_GotFocus)
+Gui.frmMain.txtJob.TabStop(True)
+Gui.frmMain.txtJob.TabIndex(1)
+Gui.frmMain.txtJob.MaxLength(6)
+Gui.frmMain.txtSuffix.Create(TextBox,"",True,34,20,0,80,29,True,0,"Tahoma",8.25,,1)
+Gui.frmMain.txtSuffix.Event(GotFocus,txtSuffix_GotFocus)
+Gui.frmMain.txtSuffix.Event(LostFocus,txtSuffix_LostFocus)
+Gui.frmMain.txtSuffix.TabStop(True)
+Gui.frmMain.txtSuffix.TabIndex(2)
+Gui.frmMain.txtSuffix.MaxLength(3)
+Gui.frmMain.cmdSelectWO.Create(Button)
+Gui.frmMain.cmdSelectWO.Enabled(True)
+Gui.frmMain.cmdSelectWO.Visible(True)
+Gui.frmMain.cmdSelectWO.Zorder(0)
+Gui.frmMain.cmdSelectWO.Size(23,23)
+Gui.frmMain.cmdSelectWO.Position(118,28)
+Gui.frmMain.cmdSelectWO.Caption("")
+Gui.frmMain.cmdSelectWO.FontName("Tahoma")
+Gui.frmMain.cmdSelectWO.FontSize(8.25)
+Gui.frmMain.cmdSelectWO.SvgPicture("icon_browser_color")
+Gui.frmMain.cmdSelectWO.Event(Click,cmdSelectWO_Click)
+Gui.frmMain.cmdSelectWO.TabStop(True)
+Gui.frmMain.cmdSelectWO.TabIndex(3)
+Gui.frmMain.lblCustLbl.Create(Label,"Customer #",True,57,13,0,14,60,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblCustLbl.BorderStyle(0)
+Gui.frmMain.lblCustomer.Create(Label,"",True,1,13,0,14,79,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblCustomer.BorderStyle(0)
+Gui.frmMain.lblCustomer.FontStyle(True,False,False,False,False)
+Gui.frmMain.lblNameLbl.Create(Label,"Customer Name",True,76,13,0,106,60,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblNameLbl.BorderStyle(0)
+Gui.frmMain.lblCustomerName.Create(Label,"",True,1,13,0,106,79,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblCustomerName.BorderStyle(0)
+Gui.frmMain.lblCustomerName.FontStyle(True,False,False,False,False)
+Gui.frmMain.lblPOLbl.Create(Label,"Customer PO",True,63,13,0,309,60,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblPOLbl.BorderStyle(0)
+Gui.frmMain.lblCustomerPO.Create(Label,"",True,1,13,0,309,79,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblCustomerPO.BorderStyle(0)
+Gui.frmMain.lblCustomerPO.FontStyle(True,False,False,False,False)
+Gui.frmMain.lblPartLbl.Create(Label,"Part",True,20,13,0,14,101,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblPartLbl.BorderStyle(0)
+Gui.frmMain.lblPart.Create(Label,"",True,1,13,0,14,119,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblPart.BorderStyle(0)
+Gui.frmMain.lblPart.FontStyle(True,False,False,False,False)
+Gui.frmMain.lblQtyLbl.Create(Label,"WO Run Qty",True,61,13,0,442,101,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblQtyLbl.BorderStyle(0)
+Gui.frmMain.lblWORunQty.Create(Label,"",True,1,13,0,442,119,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblWORunQty.BorderStyle(0)
+Gui.frmMain.lblWORunQty.FontStyle(True,False,False,False,False)
+Gui.frmMain.lblDateLbl.Create(Label,"Production Date",True,77,13,0,14,140,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblDateLbl.BorderStyle(0)
+Gui.frmMain.lblRptLbl.Create(Label,"Report ID",True,47,13,0,142,140,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblRptLbl.BorderStyle(0)
+Gui.frmMain.txtReportID.Create(TextBox,"",True,55,20,0,142,156,True,0,"Tahoma",8.25,,1)
+Gui.frmMain.txtReportID.TabStop(True)
+Gui.frmMain.txtReportID.TabIndex(8)
+Gui.frmMain.txtReportID.MaxLength(6)
+Gui.frmMain.lblRptDescLbl.Create(Label,"Report Description",True,89,13,0,244,140,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblRptDescLbl.BorderStyle(0)
+Gui.frmMain.lblRptDesc.Create(Label,"",True,1,13,0,244,160,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblRptDesc.BorderStyle(0)
+Gui.frmMain.lblRptDesc.FontStyle(True,False,False,False,False)
+Gui.frmMain.cmdSelectReport.Create(Button)
+Gui.frmMain.cmdSelectReport.Enabled(True)
+Gui.frmMain.cmdSelectReport.Visible(True)
+Gui.frmMain.cmdSelectReport.Zorder(0)
+Gui.frmMain.cmdSelectReport.Size(23,23)
+Gui.frmMain.cmdSelectReport.Position(201,154)
+Gui.frmMain.cmdSelectReport.Caption("")
+Gui.frmMain.cmdSelectReport.FontName("Tahoma")
+Gui.frmMain.cmdSelectReport.FontSize(8.25)
+Gui.frmMain.cmdSelectReport.SvgPicture("icon_browser_color")
+Gui.frmMain.cmdSelectReport.Event(Click,cmdSelectReport_Click)
+Gui.frmMain.cmdSelectReport.TabStop(True)
+Gui.frmMain.cmdSelectReport.TabIndex(9)
+Gui.frmMain.GsGridSerial.Create(GsGridControl)
+Gui.frmMain.GsGridSerial.Enabled(True)
+Gui.frmMain.GsGridSerial.Visible(True)
+Gui.frmMain.GsGridSerial.Zorder(0)
+Gui.frmMain.GsGridSerial.Size(521,384)
+Gui.frmMain.GsGridSerial.Position(14,277)
+Gui.frmMain.GsGridSerial.Event(RowCellClick,GsGridSerial_RowCellClick)
+Gui.frmMain.GsGridSerial.Anchor(15)
+Gui.frmMain.GsGridSerial.TabStop(True)
+Gui.frmMain.GsGridSerial.TabIndex(13)
+Gui.frmMain.cmdSelectAll.Create(Button)
+Gui.frmMain.cmdSelectAll.Enabled(True)
+Gui.frmMain.cmdSelectAll.Visible(True)
+Gui.frmMain.cmdSelectAll.Zorder(0)
+Gui.frmMain.cmdSelectAll.Size(90,23)
+Gui.frmMain.cmdSelectAll.Position(108,250)
+Gui.frmMain.cmdSelectAll.Caption("Select All")
+Gui.frmMain.cmdSelectAll.FontName("Tahoma")
+Gui.frmMain.cmdSelectAll.FontSize(8.25)
+Gui.frmMain.cmdSelectAll.Event(Click,cmdSelectAll_Click)
+Gui.frmMain.cmdSelectAll.TabStop(True)
+Gui.frmMain.cmdSelectAll.TabIndex(11)
+Gui.frmMain.cmdSelectAll.SvgPicture("icon_select_all_color")
+Gui.frmMain.cmdDeselectAll.Create(Button)
+Gui.frmMain.cmdDeselectAll.Enabled(True)
+Gui.frmMain.cmdDeselectAll.Visible(True)
+Gui.frmMain.cmdDeselectAll.Zorder(0)
+Gui.frmMain.cmdDeselectAll.Size(90,23)
+Gui.frmMain.cmdDeselectAll.Position(14,250)
+Gui.frmMain.cmdDeselectAll.Caption("Deselect All")
+Gui.frmMain.cmdDeselectAll.FontName("Tahoma")
+Gui.frmMain.cmdDeselectAll.FontSize(8.25)
+Gui.frmMain.cmdDeselectAll.Event(Click,cmdDeselectAll_Click)
+Gui.frmMain.cmdDeselectAll.TabStop(True)
+Gui.frmMain.cmdDeselectAll.TabIndex(10)
+Gui.frmMain.cmdDeselectAll.SvgPicture("icon_select_none_color")
+Gui.frmMain.cmdPrint.Create(Button)
+Gui.frmMain.cmdPrint.Enabled(True)
+Gui.frmMain.cmdPrint.Visible(True)
+Gui.frmMain.cmdPrint.Zorder(0)
+Gui.frmMain.cmdPrint.Size(75,23)
+Gui.frmMain.cmdPrint.Position(14,669)
+Gui.frmMain.cmdPrint.Caption("Print")
+Gui.frmMain.cmdPrint.FontName("Tahoma")
+Gui.frmMain.cmdPrint.FontSize(8.25)
+Gui.frmMain.cmdPrint.Event(Click,cmdPrint_Click)
+Gui.frmMain.cmdPrint.Anchor(6)
+Gui.frmMain.cmdPrint.TabStop(True)
+Gui.frmMain.cmdPrint.TabIndex(12)
+Gui.frmMain.cmdPrint.SvgPicture("icon_printer_color")
+Gui.frmMain.cmdPrint.DisableOnClick(20)
+Gui.frmMain.lblDescLbl.Create(Label,"Part Description",True,76,13,0,153,101,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblDescLbl.BorderStyle(0)
+Gui.frmMain.lblPartDesc.Create(Label,"",True,1,13,0,153,119,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblPartDesc.BorderStyle(0)
+Gui.frmMain.lblPartDesc.FontStyle(True,False,False,False,False)
+Gui.frmMain.lblSOLbl.Create(Label,"Sales Order / Line",True,85,13,0,418,60,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblSOLbl.BorderStyle(0)
+Gui.frmMain.lblSO.Create(Label,"",True,1,13,0,418,79,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblSO.BorderStyle(0)
+Gui.frmMain.lblSO.FontStyle(True,False,False,False,False)
+Gui.frmMain.lblSOLine.Create(Label,"",True,1,13,0,475,79,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblSOLine.BorderStyle(0)
+Gui.frmMain.lblSOLine.FontStyle(True,False,False,False,False)
+Gui.frmMain.lblPrinter.Create(Label,"Label Printer",True,60,13,0,302,14,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblPrinter.BorderStyle(0)
+Gui.frmMain.ddlPrinter.Create(DropDownList)
+Gui.frmMain.ddlPrinter.Enabled(True)
+Gui.frmMain.ddlPrinter.Visible(True)
+Gui.frmMain.ddlPrinter.Zorder(0)
+Gui.frmMain.ddlPrinter.Size(170,20)
+Gui.frmMain.ddlPrinter.Position(302,29)
+Gui.frmMain.ddlPrinter.FontName("Tahoma")
+Gui.frmMain.ddlPrinter.FontSize(8.25)
+Gui.frmMain.ddlPrinter.TabStop(True)
+Gui.frmMain.ddlPrinter.TabIndex(5)
+Gui.frmMain.lblModelLabel.Create(Label,"Model #",True,39,13,0,14,193,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblModelLabel.BorderStyle(0)
+Gui.frmMain.lblPSLabel.Create(Label,"Power Supply",True,65,13,0,142,193,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblPSLabel.BorderStyle(0)
+Gui.frmMain.lblModel.Create(Label,"",True,1,13,0,14,210,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblModel.BorderStyle(0)
+Gui.frmMain.lblModel.FontStyle(True,False,False,False,False)
+Gui.frmMain.lblPSLine1.Create(Label,"",True,1,13,0,142,210,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblPSLine1.BorderStyle(0)
+Gui.frmMain.lblPSLine1.FontStyle(True,False,False,False,False)
+Gui.frmMain.lblPSLine2.Create(Label,"",True,1,13,0,142,224,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblPSLine2.BorderStyle(0)
+Gui.frmMain.lblPSLine2.FontStyle(True,False,False,False,False)
+Gui.frmMain.lblLocnLabel.Create(Label,"Locn",True,22,13,0,394,101,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblLocnLabel.BorderStyle(0)
+Gui.frmMain.lbl2.Create(Label,"",True,1,13,0,394,119,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lbl2.BorderStyle(0)
+Gui.frmMain.lbl2.FontStyle(True,False,False,False,False)
+Gui.frmMain.lblLabelRefLabel.Create(Label,"Label Reference",True,78,13,0,405,193,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblLabelRefLabel.BorderStyle(0)
+Gui.frmMain.lblLabelReference.Create(Label,"",True,1,13,0,405,210,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lblLabelReference.BorderStyle(0)
+Gui.frmMain.lblLabelReference.FontStyle(True,False,False,False,False)
+Gui.frmMain.chkSerialized.Create(CheckBox)
+Gui.frmMain.chkSerialized.Enabled(True)
+Gui.frmMain.chkSerialized.Visible(True)
+Gui.frmMain.chkSerialized.Zorder(0)
+Gui.frmMain.chkSerialized.Size(111,20)
+Gui.frmMain.chkSerialized.Position(170,29)
+Gui.frmMain.chkSerialized.Caption("Serialized Labels?")
+Gui.frmMain.chkSerialized.FontName("Tahoma")
+Gui.frmMain.chkSerialized.FontSize(8.25)
+Gui.frmMain.chkSerialized.Value(1)
+Gui.frmMain.chkSerialized.DefaultValue(1)
+Gui.frmMain.chkSerialized.TabStop(True)
+Gui.frmMain.chkSerialized.TabIndex(4)
+Gui.frmMain.lbl3.Create(Label,"Copies",True,32,13,0,476,14,True,0,"Tahoma",8.25,,0,0)
+Gui.frmMain.lbl3.BorderStyle(0)
+Gui.frmMain.txtCopies.Create(TextBox,"1",True,40,20,0,476,29,True,0,"Tahoma",8.25,,1)
+Gui.frmMain.txtCopies.DefaultValue("1")
+Gui.frmMain.txtCopies.MaxLength(3)
+Gui.frmMain.txtCopies.TabStop(True)
+Gui.frmMain.txtCopies.TabIndex(6)
+Gui.frmMain.txtCopies.NumericOnly(2)
+Gui.frmMain.txtDate.Create(DatePicker)
+Gui.frmMain.txtDate.Enabled(True)
+Gui.frmMain.txtDate.Visible(True)
+Gui.frmMain.txtDate.Zorder(0)
+Gui.frmMain.txtDate.Size(100,20)
+Gui.frmMain.txtDate.Position(14,156)
+Gui.frmMain.txtDate.CheckBox(False)
+Gui.frmMain.txtDate.FontName("Tahoma")
+Gui.frmMain.txtDate.FontSize(8.25)
+Gui.frmMain.txtDate.TabStop(True)
+Gui.frmMain.txtDate.TabIndex(7)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local..BulkDeclareString(sError,sSQL,sRet,sFilename,sSavedPrinter,sButtonText,sScriptButtons)
+V.Local..BulkDeclareLong(iUser)
+V.Local.sButtonText.Set("WO Labels")
+
+Function.Intrinsic.UI.UsePixels ' Allows you to use Pixels instead of Twips throughout
+
+'Set GUI Button Captions
+F.Intrinsic.Control.SelectCase(V.Caller.Hook)
+	F.Intrinsic.Control.CaseAny(15710)
+		' When old/Legacy GUI loads, set Button Text, then end program (for now)
+		' V.Passed - 000016,000020,000021 - Script 1/2/3 buttons respectively.
+		V.Passed.000021.Set(V.Local.sButtonText)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.Case(49710)
+		' When new GUI loads, set Button Text, then end program (for now)
+		F.Intrinsic.String.Replace(V.Passed.MainFormView-WindowsUIButtonPanel-1,"Script 3",V.Local.sButtonText,V.Local.sScriptButtons)
+		V.Passed.MainFormView-WindowsUIButtonPanel-1.Set(V.Local.sScriptButtons)
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.CaseElse
+		'Time to rock and roll...
+		'Called from Menu...  or...
+		'Called from Old GUI (Script 1/2/3 :: 15760/15770/15780)
+		'Called from New SFDC.net (Script 1/2/3 :: 49760/49761/49762)
+F.Intrinsic.Control.EndSelect
+
+F.ODBC.Connection!Con.OpenCompanyConnection
+F.ODBC.Connection!Conc.OpenCommonConnection
+
+'Load Sentinel Printers dropdownlist...
+F.Intrinsic.String.Build("Select if(ltrim(rtrim(SENTINELALIAS))='',ltrim(rtrim(PRINTERNAME)),ltrim(rtrim(SENTINELALIAS))), if(ltrim(rtrim(SENTINELALIAS))='',ltrim(rtrim(PRINTERNAME)),ltrim(rtrim(SENTINELALIAS))) From Server_Printers Where Sentinelenabled = 1 Order by Sentinelalias","",V.Local.sSql)
+F.Data.Dictionary.CreateFromSQL("PRINTER","conC",V.Local.sSql)
+Gui.frmMain.ddlPrinter.AddItem("")
+Gui.frmMain.ddlPrinter.AddItems("Dictionary","PRINTER")
+F.Data.Dictionary.Close("Printer")
+
+'Set a default report id...
+F.Intrinsic.String.Build("select top 1 a.Report_Id, a.Description From BIR_USER a join BIR_ACTIVE_SEQ b on a.Report_Id = b.Report_ID where b.Active = 1 and a.Description like '6939%' and a.Company = '{0}' order by a.Report_ID",V.Caller.CompanyCode,V.Local.sSql)
+F.ODBC.Connection!conc.ExecuteAndReturn(V.Local.sSQL,V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet.Trim,<>,"")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.frmMain.txtReportID.Text(V.Local.sRet(0).Trim)
+	Gui.frmMain.lblRptDesc.Text(V.Local.sRet(1).Trim)
+F.Intrinsic.Control.EndIf
+
+'Retrieve Last Printer Selection...
+F.Global.Security.GetUserID(V.Caller.User,V.Caller.CompanyCode,V.Local.iUser)
+F.Intrinsic.File.GetFileNameFromFQN(V.Caller.ScriptFile,V.Local.sFileName)
+F.Intrinsic.String.Left(V.Local.sFileName.UCase,50,V.Local.sFileName)
+F.Global.Registry.ReadValue(V.Local.iUser,V.Caller.CompanyCode,V.Local.sFileName,V.Screen.frmMain!txtReportID.Text.Trim,1000,5,"",V.Local.sSavedPrinter)
+Gui.frmMain.ddlPrinter.Text(V.Local.sSavedPrinter)
+
+'Load data...
+F.Intrinsic.Control.CallSub(CheckTable)
+F.Intrinsic.Control.CallSub(Get_Data)
+F.Intrinsic.Control.CallSub(Set_Prop)
+
+'Set Production Date to today...
+Gui.frmMain.txtDate.Value(V.Ambient.Date)
+
+'Pop it to the top...
+Gui.frmMain..Show
+Gui.frmMain..AlwaysOnTop(True)
+Gui.frmMain..AlwaysOnTop(False)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: Project {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(frmMain_UnLoad)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Main.End
+
+Program.Sub.cmdPrint_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdPrint_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local..BulkDeclareString(sError,sSQL,sCustPart,sPrinter,sMFG,sSerial,sTemp,sFileName)
+V.Local..BulkDeclareLong(i,iRunID,iLogID,iR,iUser)
+
+F.Intrinsic.Control.If(V.Screen.frmMain!ddlPrinter.Text.Trim,=,"")
+	F.Intrinsic.UI.Msgbox("Select a Label Printer","Attention")
+	Gui.frmMain.ddlPrinter.SetFocus
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.frmMain!txtReportID.Text,=,"")
+	F.Intrinsic.UI.Msgbox("Select a Report ID","Attention")
+	Gui.frmMain.txtReportID.SetFocus
+	Gui.frmMain.txtReportID.SelectAll
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+V.Local.sPrinter.Set(V.Screen.frmMain!ddlPrinter.Text.Trim)
+F.Intrinsic.Control.If(V.Local.sPrinter,<>,"")
+	'Save selected printer to the registry so next time we can load it as the default selection...
+	F.Global.Security.GetUserID(V.Caller.User,V.Caller.CompanyCode,V.Local.iUser)
+	F.Intrinsic.File.GetFileNameFromFQN(V.Caller.ScriptFile,V.Local.sFileName)
+	F.Intrinsic.String.Left(V.Local.sFileName,50,V.Local.sFileName)
+	F.Global.Registry.AddValue(V.Local.iUser,V.Caller.CompanyCode,V.Local.sFileName,V.Screen.frmMain!txtReportID.Text.Trim,1000,False,V.Local.sPrinter,False,0,-999.0,1/1/1980,12:00:00 AM)
+F.Intrinsic.Control.EndIf
+
+'Create a dataset of just selected rows...
+F.Data.DataView.Create("Serials","Temp",22,"Selection = True","")
+F.Data.DataView.ToDataTable("Serials","Temp","dtData",False)
+F.Data.DataView.Close("Serials","Temp")
+
+F.Data.DataTable.Create("Label",True)
+F.Data.DataTable.AddColumn("Label","MFG",String)
+F.Data.DataTable.AddColumn("Label","Customer_Name",String)
+F.Data.DataTable.AddColumn("Label","Customer_Number",String)
+F.Data.DataTable.AddColumn("Label","Customer_PO",String)
+F.Data.DataTable.AddColumn("Label","Customer_Part",String)
+F.Data.DataTable.AddColumn("Label","Job",String)
+F.Data.DataTable.AddColumn("Label","Part",String)
+F.Data.DataTable.AddColumn("Label","Part_Description",String)
+F.Data.DataTable.AddColumn("Label","Production_Date",String)
+F.Data.DataTable.AddColumn("Label","Sales_Order_Line_Number",String)
+F.Data.DataTable.AddColumn("Label","Sales_Order_Number",String)
+F.Data.DataTable.AddColumn("Label","Serial_Number",String)
+F.Data.DataTable.AddColumn("Label","Suffix",String)
+F.Data.DataTable.AddColumn("Label","WO_Run_Qty",Float)
+F.Data.DataTable.AddColumn("Label","Power_Supply_Line1",String)
+F.Data.DataTable.AddColumn("Label","Power_Supply_Line2",String)
+F.Data.DataTable.AddColumn("Label","Label_Reference",String)
+F.Data.DataTable.AddColumn("Label","Model_Number",String)
+F.Data.DataTable.AddColumn("Label","User_ID",String)
+F.Data.DataTable.AddColumn("Label","LABEL_COPY",Long)
+
+F.Intrinsic.String.Build("Select Customer_Part From V_Inv_Cross_Ref Where Part = '{0}' and Customer = '{1}'",V.Screen.frmMain!lblPart.Caption,V.Screen.frmMain!lblCustomer.Caption,V.Local.sSql)
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSql,V.Local.sCustPart)
+
+F.Intrinsic.String.Build("select rtrim(TEXT) as TEXT from CUST_HF_TEXT where Cust = '{0}' and Type <> '1' and ON_SORDR <> '1' and ON_INVC <> '1' and ON_BOL <> '1' and ON_PKLIST <> '1' and ON_QUOTE <> '1' and ON_WO <> '1'",V.Screen.frmMain!lblCustomer.Caption,V.Local.sSql)
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSql,V.Local.sMFG)
+
+F.Intrinsic.Control.If(V.Screen.frmMain!chkSerialized.CheckedAsBoolean)
+	'If this is a serialized label print job, and we need to loop thru which SN's to print labels for...
+	F.Intrinsic.Control.For(V.Local.i,0,V.DataTable.dtData.RowCount--,1)
+		V.Local.sSerial.Set(V.DataTable.dtData(V.Local.i).Serial_Start!FieldValTrim)
+		F.Data.DataTable.AddRow("Label","MFG",V.Local.sMFG,"Customer_Name",V.Screen.frmMain!lblCustomer.Caption,"Customer_Name",V.Screen.frmMain!lblCustomerName.Caption,"Customer_PO",V.Screen.frmMain!lblCustomerPO.Caption,"Job",V.Screen.frmMain!txtJob.Text,"Suffix",V.Screen.frmMain!txtSuffix.Text,"Part",V.Screen.frmMain!lblPart.Caption,"Part_Description",V.Screen.frmMain!lblPartDesc.Caption,"Production_Date",V.Screen.frmMain!txtDate.Value,"Sales_Order_Number",V.Screen.frmMain!lblSO.Caption,"Sales_Order_Line_Number",V.Screen.frmMain!lblSOLine.Caption,"WO_Run_Qty",V.Screen.frmMain!lblWORunQty.Caption,"Customer_Part",V.Local.sCustPart.Trim,"Serial_Number",V.Local.sSerial,"Model_Number",V.Screen.frmMain!lblModel.Caption,"Power_Supply_Line1",V.Screen.frmMain!lblPSLine1.Caption,"Power_Supply_Line2",V.Screen.frmMain!lblPSLine2.Caption,"Label_Reference",V.Screen.frmMain!lblLabelReference.Caption,"USER_ID",V.Caller.User,"LABEL_COPY",V.Screen.frmMain!txtCopies.Text)
+		
+		'Set Label Printed flag in custom table.  Yes, we're tracking which SN's were printed.
+		F.Intrinsic.String.Build("select JOB, SUFFIX, SERIAL, PRINTED from GAB_6939_SNPrinted where job='{0}' and suffix='{1}' and serial='{2}'",V.Screen.frmMain!txtJob.Text,V.Screen.frmMain!txtSuffix.Text,V.Local.sSerial,V.Local.sSql)
+		F.ODBC.Connection!con.OpenLocalRecordsetRW("rs",V.Local.sSql)
+		F.Intrinsic.Control.If(V.ODBC.con!rs.EOF,=,True)
+			F.ODBC.con!rs.AddNew
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rs.Set!JOB(V.Screen.frmMain!txtJob.Text)
+		F.ODBC.con!rs.Set!SUFFIX(V.Screen.frmMain!txtSuffix.Text)
+		F.ODBC.con!rs.Set!SERIAL(V.Local.sSerial)
+		F.ODBC.con!rs.Set!PRINTED(1)
+		F.ODBC.con!rs.Update
+		F.ODBC.con!rs.Close
+	F.Intrinsic.Control.Next(V.Local.i)
+
+F.Intrinsic.Control.Else
+	'If this is NOT a serialized label print job, and we just need to print an unserialized dataset, a single label.
+	F.Data.DataTable.AddRow("Label","MFG",V.Local.sMFG,"Customer_Name",V.Screen.frmMain!lblCustomer.Caption,"Customer_Name",V.Screen.frmMain!lblCustomerName.Caption,"Customer_PO",V.Screen.frmMain!lblCustomerPO.Caption,"Job",V.Screen.frmMain!txtJob.Text,"Suffix",V.Screen.frmMain!txtSuffix.Text,"Part",V.Screen.frmMain!lblPart.Caption,"Part_Description",V.Screen.frmMain!lblPartDesc.Caption,"Production_Date",V.Screen.frmMain!txtDate.Value,"Sales_Order_Number",V.Screen.frmMain!lblSO.Caption,"Sales_Order_Line_Number",V.Screen.frmMain!lblSOLine.Caption,"WO_Run_Qty",V.Screen.frmMain!lblWORunQty.Caption,"Customer_Part",V.Local.sCustPart.Trim,"Serial_Number","","Model_Number",V.Screen.frmMain!lblModel.Caption,"Power_Supply_Line1",V.Screen.frmMain!lblPSLine1.Caption,"Power_Supply_Line2",V.Screen.frmMain!lblPSLine2.Caption,"Label_Reference",V.Screen.frmMain!lblLabelReference.Caption,"USER_ID",V.Caller.User,"LABEL_COPY",V.Screen.frmMain!txtCopies.Text)
+F.Intrinsic.Control.EndIf
+
+F.Data.DataTable.Close("dtData")
+
+'joining the labels dt above to a bigger dataset just for data availability
+F.Data.Linq.Join("LeftJoin","DataTable","Label*!*A","DataTable","JobHeader*!*B","A.JOB=B.JOB AND A.SUFFIX=B.SUFFIX","*","","","","dtAllData",True)
+
+F.Intrinsic.Control.If(V.DataTable.Label.RowCount--,<>,-1)
+	F.Global.BI.GetRunID(V.Local.iRunID)
+	F.Global.BI.StartLogging(V.Local.iRunID,V.Screen.frmMain!txtReportID.Text,-1,V.Local.iLogID)
+	F.Global.BI.StopLogging(V.Local.iLogID)
+	F.Global.BI.PrintCodesoftLabelFromDataTable(V.Local.iRunID, V.Local.iLogID, "dtAllData", V.Local.sPrinter, False)
+F.Intrinsic.Control.EndIf
+
+F.Data.DataTable.Close("dtAllData")
+F.Data.DataTable.Close("Label")
+
+F.Intrinsic.Control.CallSub(Get_Data)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdPrint_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: Project {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(frmMain_UnLoad)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdPrint_Click.End
+
+Program.Sub.GsGridSerial_RowCellClick.Start
+F.Intrinsic.Control.SetErrorHandler("GsGridSerial_RowCellClick_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String,"")
+
+F.Intrinsic.Control.SelectCase(V.Args.Column.UCase)
+	F.Intrinsic.Control.Case("SELECTION")
+		F.Data.DataTable.SetValue("Serials",V.Args.RowIndex,"SELECTION",V.DataTable.Serials(V.Args.RowIndex).Selection!FieldValNot)
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("GsGridSerial_RowCellClick_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: Project {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(frmMain_UnLoad)
+Function.Intrinsic.Control.EndIf
+Program.Sub.GsGridSerial_RowCellClick.End
+
+Program.Sub.txtJob_GotFocus.Start
+F.Intrinsic.Control.SetErrorHandler("txtJob_GotFocus_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String,"")
+
+Gui.frmMain.txtJob.SelectAll
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txtJob_GotFocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: Project {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(frmMain_UnLoad)
+Function.Intrinsic.Control.EndIf
+Program.Sub.txtJob_GotFocus.End
+
+Program.Sub.txtSuffix_GotFocus.Start
+F.Intrinsic.Control.SetErrorHandler("txtSuffix_GotFocus_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String,"")
+
+Gui.frmMain.txtSuffix.SelectAll
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txtSuffix_GotFocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: Project {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(frmMain_UnLoad)
+Function.Intrinsic.Control.EndIf
+Program.Sub.txtSuffix_GotFocus.End
+
+Program.Sub.txtSuffix_LostFocus.Start
+F.Intrinsic.Control.SetErrorHandler("txtSuffix_LostFocus_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String,"")
+
+F.Intrinsic.Control.CallSub(Get_Data)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txtSuffix_LostFocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: Project {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(frmMain_UnLoad)
+Function.Intrinsic.Control.EndIf
+Program.Sub.txtSuffix_LostFocus.End
+
+Program.Sub.cmdSelectWO_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdSelectWO_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local..BulkDeclareString(sError,sSQL,sRet,sTitles,sWidths)
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+
+F.Intrinsic.String.Split("Job*!*Suffix*!*Part*!*Description","*!*",V.Local.sTitles)
+F.Intrinsic.String.Split("200*!*150*!*500*!*1000","*!*",V.Local.sWidths)
+
+F.Intrinsic.UI.Browser("Select Work Order:","con","select distinct Job, Suffix, Part, Description FROM V_JOB_HEADER order by Job, Suffix",V.Local.sTitles,V.Local.sWidths,"8000","8000",V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.frmMain.txtJob.Text(V.Local.sRet(0).Trim)
+	Gui.frmMain.txtSuffix.Text(V.Local.sRet(1).Trim)
+	F.Intrinsic.Control.CallSub(Get_Data)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdSelectWO_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: Project {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(frmMain_UnLoad)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdSelectWO_Click.End
+
+Program.Sub.cmdSelectReport_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdSelectReport_Click_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String,"")
+V.Local.sSql.Declare(String,"")
+V.Local.sRet.Declare(String,"")
+V.Local.sTitles.Declare(String,"")
+V.Local.sWidths.Declare(String,"")
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+
+'_ is a keyword for like statements so added an excape \ so the query will look for the _ in the Descrpition 
+F.Intrinsic.String.Build("select distinct a.Report_Id, a.Description From BIR_USER a join BIR_ACTIVE_SEQ b on a.Report_Id = b.Report_ID where b.Active = 1 and a.Description like '6939%' and a.Company = '{0}' order by a.Report_ID",V.Caller.CompanyCode,V.Local.sSql)
+
+F.Intrinsic.String.Split("Report ID*!*Description","*!*",V.Local.sTitles)
+F.Intrinsic.String.Split("200*!*1800","*!*",V.Local.sWidths)
+
+F.Intrinsic.UI.Browser("Select Report ID:","conC",V.Local.sSql,V.Local.sTitles,V.Local.sWidths,"8000","8000",V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.frmMain.txtReportID.Text(V.Local.sRet(0).Trim)
+	Gui.frmMain.lblRptDesc.Text(V.Local.sRet(1).Trim)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdSelectReport_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: Project {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(frmMain_UnLoad)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdSelectReport_Click.End
+
+Program.Sub.frmMain_UnLoad.Start
+F.Intrinsic.Control.SetErrorHandler("frmMain_UnLoad_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String,"")
+
+F.ODBC.Connection!Con.Close
+F.ODBC.Connection!ConC.Close
+
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("frmMain_UnLoad_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+Program.Sub.frmMain_UnLoad.End
+
+Program.Sub.Get_Data.Start
+F.Intrinsic.Control.SetErrorHandler("Get_Data_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String,"")
+
+V.Local.sSql.Declare(String,"")
+V.Local.sDate.Declare(String,"")
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.Control.If(V.DataTable.Serials.Exists)
+	
+	F.Intrinsic.String.Build("Select Distinct a.Serial_Start, b.Printed From V_Job_Serial a Left Join GAB_6939_SNPrinted b on a.Job=b.Job and a.Suffix=b.Suffix and a.Serial_Start=b.serial Where a.Job = '{0}' and a.Suffix = '{1}'",V.Screen.frmMain!txtJob.Text,V.Screen.frmMain!txtSuffix.Text,V.Local.sSql)
+	F.Data.DataTable.CreateFromSQL("SerialsTemp","Con",V.Local.sSql,True)
+	
+	F.Data.DataTable.DeleteRow("Serials")
+	F.Data.DataTable.AcceptChanges("Serials")
+	
+	F.Intrinsic.Control.If(V.DataTable.SerialsTemp.RowCount,>,0)
+		F.Data.DataTable.Merge("SerialsTemp","Serials",False,4)
+	F.Intrinsic.Control.EndIf
+	
+	F.Data.DataTable.Close("SerialsTemp")
+	
+	F.Data.DataTable.SetValue("Serials",-1,"SELECTION",False)
+	
+	F.Intrinsic.String.Build("select rtrim(a.Job) Job, rtrim(a.Suffix) Suffix, a.Part, a.Location, a.Description, a.Customer_PO, IF(a.Sales_Order <> '0000000',a.Sales_Order,'') as 'Sales_Order', IF(a.Sales_Order <> '0000000' and a.Sales_Order <> '',a.Sales_Order_Line+'0','') as 'Sales_Order_Line', a.Qty_Order, a.Date_Opened, a.Customer, b.Name_Customer, c.user1 'Power_Supply_Line1', c.user2 'Power_Supply_Line2', c.user3 'Label_Reference', d.text_info1 'Model_Number', d.text_info2 'Serial_Number_Prefix', c.*, d.*, w.*, v.*, IF(x.GSS_PART is null,substring(A.PART,0,17),x.DISPLAY_PART) AS DISPLAY_PART, IF(x.GSS_PART is null,substring(A.PART,18,3),x.DISPLAY_REV) AS DISPLAY_REV, IF(x.GSS_PART is null,A.PART,ltrim(rtrim(x.DISPLAY_PART))+' '+ltrim(rtrim(x.DISPLAY_REV))) AS DISPLAY_PARTREV, n.text EXTRATEXT from V_Job_Header a left Join V_Customer_Master b on a.Customer = b.Customer left Join GAB_4912_USER_FIELDS c on a.part=c.part and a.location=c.location left join V_INVENTORY_ALL d on a.part=d.part left outer join INV_LXR x ON a.PART=x.GSS_PART left outer join V_PROJECT_XREF w on a.JOB=w.WO and a.SUFFIX=w.WO_SUFF left outer join V_PROJECT_MASTER v on w.PROJECT=v.PROJECT left outer join INV_EXTRA_TEXT n ON a.part=n.part where Job = '{0}' and Suffix = '{1}'",V.Screen.frmMain!txtJob.Text,V.Screen.frmMain!txtSuffix.Text,V.Local.sSql)
+	F.Intrinsic.Control.If(V.DataTable.JobHeader.Exists)
+		F.Data.DataTable.Close("JobHeader")
+	F.Intrinsic.Control.EndIf
+	F.Data.DataTable.CreateFromSQL("JobHeader","con",V.Local.sSql,True)
+	
+	F.Intrinsic.Control.If(V.DataTable.JobHeader.RowCount--,<>,-1)
+		Gui.frmMain.lblCustomer.Caption(V.DataTable.JobHeader(V.DataTable.JobHeader.RowCount--).Customer!FieldValTrim)
+		Gui.frmMain.lblCustomerName.Caption(V.DataTable.JobHeader(V.DataTable.JobHeader.RowCount--).Name_Customer!FieldValTrim)
+		Gui.frmMain.lblCustomerPO.Caption(V.DataTable.JobHeader(V.DataTable.JobHeader.RowCount--).Customer_PO!FieldValTrim)
+		Gui.frmMain.lblPart.Caption(V.DataTable.JobHeader(V.DataTable.JobHeader.RowCount--).Part!FieldValTrim)
+		gui.frmMain.lblLocnLabel.Caption(V.DataTable.JobHeader(V.DataTable.JobHeader.RowCount--).Location!FieldValTrim)
+		Gui.frmMain.lblPartDesc.Caption(V.DataTable.JobHeader(V.DataTable.JobHeader.RowCount--).Description!FieldValTrim)
+		Gui.frmMain.lblSO.Caption(V.DataTable.JobHeader(V.DataTable.JobHeader.RowCount--).Sales_Order!FieldValTrim)
+		Gui.frmMain.lblSOLine.Caption(V.DataTable.JobHeader(V.DataTable.JobHeader.RowCount--).Sales_Order_Line!FieldValTrim)
+		Gui.frmMain.lblWORunQty.Caption(V.DataTable.JobHeader(V.DataTable.JobHeader.RowCount--).Qty_Order!FieldVal)
+		Gui.frmMain.txtDate.Value(V.Ambient.Date)
+		Gui.frmMain.lblModel.Text(V.DataTable.JobHeader(V.DataTable.JobHeader.RowCount--).Model_Number!FieldValTrim)
+		Gui.frmMain.lblPSLine1.Text(V.DataTable.JobHeader(V.DataTable.JobHeader.RowCount--).Power_Supply_Line1!FieldValTrim)
+		Gui.frmMain.lblPSLine2.Text(V.DataTable.JobHeader(V.DataTable.JobHeader.RowCount--).Power_Supply_Line2!FieldValTrim)
+		Gui.frmMain.lblLabelReference.Text(V.DataTable.JobHeader(V.DataTable.JobHeader.RowCount--).Label_Reference!FieldValTrim)
+	F.Intrinsic.Control.Else
+		Gui.frmMain.lblCustomer.Caption("")
+		Gui.frmMain.lblCustomerName.Caption("")
+		Gui.frmMain.lblCustomerPO.Caption("")
+		Gui.frmMain.lblPart.Caption("")
+		Gui.frmMain.lblPartDesc.Caption("")
+		Gui.frmMain.lblSO.Caption("")
+		Gui.frmMain.lblSOLine.Caption("")
+		Gui.frmMain.lblWORunQty.Caption("")
+		Gui.frmMain.txtDate.Value(V.Ambient.Date)
+		Gui.frmMain.lblModel.Text("")
+		Gui.frmMain.lblPSLine1.Text("")
+		Gui.frmMain.lblPSLine2.Text("")
+		Gui.frmMain.lblLabelReference.Text("")
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Select Cast(0 as Bit) as Selection, a.Serial_Start, Cast(0 as Bit) as Printed From V_Job_Serial a Left Join GAB_6939_SNPrinted b on a.job=b.job and a.suffix=b.suffix and a.Serial_Start=b.serial Where a.Job = '{0}' and a.Suffix = '{1}'",V.Screen.frmMain!txtJob.Text,V.Screen.frmMain!txtSuffix.Text,V.Local.sSql)
+	F.Data.DataTable.CreateFromSQL("Serials","Con",V.Local.sSql,True)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.DataTable.Serials.RowCount,>,0)
+	Gui.frmMain.chkSerialized.Value(True)
+F.Intrinsic.Control.Else
+	Gui.frmMain.chkSerialized.Value(False)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Get_Data_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: Project {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(frmMain_UnLoad)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Get_Data.End
+
+Program.Sub.Set_Prop.Start
+F.Intrinsic.Control.SetErrorHandler("Set_Prop_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String,"")
+
+Gui.frmMain.GsGridSerial.AddGridviewFromDatatable("GSerials","Serials")
+Gui.frmMain.GsGridSerial.SetGridviewProperty("GSerials","Editable",False)
+Gui.frmMain.GsGridSerial.SetGridviewProperty("GSerials","ReadOnly",True)
+Gui.frmMain.GsGridSerial.SetGridviewProperty("GSerials","OptionsViewColumnAutoWidth",True)
+Gui.frmMain.GsGridSerial.SetGridviewProperty("GSerials","OptionsFindAlwaysVisible",True)
+Gui.frmMain.GsGridSerial.SetGridviewProperty("GSerials","ActiveFilterString","[Printed]<>True")
+
+Gui.frmMain.GsGridSerial.SetColumnProperty("GSerials","Selection","Caption","Selection")
+Gui.frmMain.GsGridSerial.SetColumnProperty("GSerials","Serial_Start","Caption","Serial")
+Gui.frmMain.GsGridSerial.SetColumnProperty("GSerials","Printed","Caption","Printed")
+
+Gui.frmMain.GsGridSerial.SetColumnProperty("GSerials","Selection","Fixed","Left")
+Gui.frmMain.GsGridSerial.SetColumnProperty("GSerials","Printed","Fixed","Right")
+
+Gui.frmMain.GsGridSerial.MainView("GSerials")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Set_Prop_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: Project {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(frmMain_UnLoad)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Set_Prop.End
+
+Program.Sub.cmdDeselectAll_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdDeselectAll_Click_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String,"")
+
+F.Intrinsic.Control.If(V.DataTable.Serials.RowCount--,<>,-1)
+	F.Data.DataTable.SetValue("Serials",-1,"SELECTION",False)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdDeselectAll_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: Project {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(frmMain_UnLoad)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdDeselectAll_Click.End
+
+Program.Sub.cmdSelectAll_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdSelectAll_Click_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String,"")
+
+F.Intrinsic.Control.If(V.DataTable.Serials.RowCount--,<>,-1)
+	F.Data.DataTable.SetValue("Serials",-1,"SELECTION",True)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdSelectAll_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: Project {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(frmMain_UnLoad)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdSelectAll_Click.End
+
+Program.Sub.CheckTable.Start
+F.Intrinsic.Control.SetErrorHandler("CheckTable_Err")
+F.Intrinsic.Control.ClearErrors
+V.Local.sError.Declare(String,"")
+
+V.Local..BulkDeclareBoolean(bExists)
+V.Local..BulkDeclareString(sSQL)
+
+F.ODBC.Connection!Con.TableExists("GAB_6939_SNPrinted",V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists,=,False)
+	F.ODBC.Connection!Con.Execute("CREATE TABLE  GAB_6939_SNPrinted (JOB  CHAR(6) NOT NULL , SUFFIX  CHAR(3) NOT NULL , SERIAL  CHAR(20) NOT NULL , PRINTED  BIT DEFAULT '0' NOT NULL )")
+	F.ODBC.Connection!Con.Execute("CREATE UNIQUE INDEX  GAB_6939_SNPrinted_K00  ON  GAB_6939_SNPrinted ( JOB ,  SUFFIX ,  SERIAL )")
+	F.ODBC.Connection!Con.Execute("CREATE INDEX  GAB_6939_SNPrinted_K01  ON  GAB_6939_SNPrinted ( JOB ,  SUFFIX )")
+	F.ODBC.Connection!Con.Execute("CREATE INDEX  GAB_6939_SNPrinted_K02  ON  GAB_6939_SNPrinted ( SERIAL )")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Label("CheckTable_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: Project {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(frmMain_UnLoad)
+Function.Intrinsic.Control.EndIf
+Program.Sub.CheckTable.End
+
+Program.Sub.Comments.Start
+${$5$}$20.1.8328.25015$}$1
+${$6$}$jwithrow$}$20221103135808921$}$D95tSYIikIvF+oq+s87EtBQePACEH+EydNCoHDy8n1rBIFfjbbV7tnKOaiOO7PmrSojAHFfk6wpz3p5N8yVr+w==
+Program.Sub.Comments.End
